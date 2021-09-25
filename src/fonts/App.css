@@ -1,0 +1,88 @@
+@font-face {
+  font-family: "Cafe24Ohsquare";
+  src: url("./Cafe24Ohsquare.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "GowunDodum-Regular";
+  src: url("./GowunDodum-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SBAggroB";
+  src: url("./SB 어그로 B.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SBAggroL";
+  src: url("./SB 어그로 L.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SBAggroM";
+  src: url("./SB 어그로 M.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeoT";
+  src: url("./AppleSDGothicNeoT.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeoUL";
+  src: url("./AppleSDGothicNeoUL.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeoL";
+  src: url("./AppleSDGothicNeoL.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeoR";
+  src: url("./AppleSDGothicNeoR.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeoM";
+  src: url("./AppleSDGothicNeoM.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeoB";
+  src: url("./AppleSDGothicNeoB.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeoEB";
+  src: url("./AppleSDGothicNeoEB.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeoH";
+  src: url("./AppleSDGothicNeoH.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeoSB";
+  src: url("./AppleSDGothicNeoSB.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "HSGaeulSenggak20";
+  src: url("./HS가을생각체2.0.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "HSYuji-Regular";
+  src: url("./HS유지체.ttf") format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "GowunDodum-Regular", sans-serif;
+}

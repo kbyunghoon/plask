@@ -3,10 +3,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { createBrowserHistory } from "history";
 import { connectRouter } from "connected-react-router";
+import cart from "./modules/cart";
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
+  cart: cart,
   router: connectRouter(history),
 });
 
