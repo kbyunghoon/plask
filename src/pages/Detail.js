@@ -6,6 +6,7 @@ import { ReactComponent as Arrow } from "media/icon/Arrow.svg";
 import { product } from "dummy_data/category";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD_CART } from "redux/modules/cart";
+import Swal from "sweetalert2";
 
 const Detail = () => {
   const params = useParams();
@@ -51,7 +52,17 @@ const Detail = () => {
         </DetailContainer>
         <ButtonWrap>
           <CartButton onClick={addcart}>장바구니 담기</CartButton>
-          <BuyButton>구매하기</BuyButton>
+          <BuyButton
+            onClick={() =>
+              Swal.fire({
+                icon: "error",
+                title: "준비 중입니다.",
+                confirmButtonText: '확인',
+              })
+            }
+          >
+            구매하기
+          </BuyButton>
         </ButtonWrap>
       </DetailWrap>
     </Wrap>

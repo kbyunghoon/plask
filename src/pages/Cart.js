@@ -8,7 +8,7 @@ const Cart = (props) => {
   const dispatch = useDispatch();
 
   const deleteProduct = () => {
-    dispatch(DEL_CART());
+    dispatch(DEL_CART(props.id));
   };
 
   return (
@@ -37,6 +37,7 @@ const TrashLogo = styled.a`
   background: url("${(props) => (props.logo ? props.logo : "")}") no-repeat;
   width: 22px;
   height: 26px;
+  margin-right: 20px;
 `;
 
 const ProductWrap = styled.div`
@@ -74,6 +75,9 @@ const CartWrap = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+  padding: 15px 0px;
 `;
 
 const CartBox = styled.div`

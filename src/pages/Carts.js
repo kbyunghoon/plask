@@ -1,21 +1,150 @@
 import { product } from "dummy_data/category";
 import React from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
 import Cart from "./Cart";
 
 const Carts = () => {
-  const data = product[0];
-  console.log(data);
+  const data = useSelector((state) => state.cart.data);
+  const dispatch = useDispatch();
+
+  let totalsum = 0;
+  data.map((p, idx) => {
+    console.log(totalsum + parseInt(p.beforeprice.replace(/\,/g, "")));
+  });
+
+  // const totaldeliverysum = 0
+  // data.map((p, idx) => {
+  //   totaldeliverysum = totaldeliverysum + parseInt(p.price.replace(/\,/g, ""));
+  // });
+
+  let totaldiscount = 0;
+  data.map((p, idx) => {
+    totaldiscount =
+      totaldiscount +
+      (parseInt(p.beforeprice.replace(/\,/g, "")) -
+        parseInt(p.price.replace(/\,/g, "")));
+  });
+
+  let paypricesum = 0;
+  data.map((p, idx) => {
+    paypricesum = paypricesum + parseInt(p.price.replace(/\,/g, ""));
+  });
 
   return (
     <Wrap>
       <Name>홍길동님 장바구니</Name>
-      {data.map((p, idx) => {
-        return <Cart {...p} />;
-      })}
+      <CartContainer>
+        <CartWrap>
+          {data.map((p, idx) => {
+            return <Cart {...p} />;
+          })}
+        </CartWrap>
+        <RightWrap>
+          <Price>
+            <TotalPrice>
+              총 상품금액
+              <PriceText>{totalsum.toLocaleString("ko-KR")}원</PriceText>
+            </TotalPrice>
+            <TotalDelivery>
+              총 배송비 <PriceText>0원</PriceText>
+            </TotalDelivery>
+            <TotalDiscount>
+              총 할인금액
+              <PriceText>{totaldiscount.toLocaleString("ko-KR")}원</PriceText>
+            </TotalDiscount>
+            <PayPrice>
+              결제금액
+              <PriceText>{paypricesum.toLocaleString("ko-KR")}원</PriceText>
+            </PayPrice>
+          </Price>
+          <BuyButton>구매하기</BuyButton>
+        </RightWrap>
+      </CartContainer>
     </Wrap>
   );
 };
+
+const RightWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const BuyButton = styled.button`
+  margin-top: 20px;
+  user-select: none;
+  cursor: pointer;
+  font-family: "paybooc-Bold";
+  color: #ffffff;
+  font-size: 1rem;
+  width: 300px;
+  height: 50px;
+  background-color: #5b57ff;
+  box-shadow: 0px 3px 6px #00000029;
+  border: 1px solid;
+  border-color: #5b57ff;
+  border-radius: 5px;
+`;
+
+const PriceText = styled.div`
+  font-weight: 600;
+`;
+
+const CartContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const TotalPrice = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const TotalDelivery = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const TotalDiscount = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const PayPrice = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const Pay = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const Price = styled.div`
+  font-family: "AppleSDGothicNeoL";
+  font-size: 20px;
+  background-color: #e3e3e380;
+  border-radius: 5px;
+  border: 1px solid #e3e3e380;
+  padding: 30px 20px;
+  width: 300px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+
+const CartWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+`;
 
 const Name = styled.div`
   font-weight: 600;
