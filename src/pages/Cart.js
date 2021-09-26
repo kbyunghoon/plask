@@ -22,7 +22,9 @@ const Cart = (props) => {
           </ProductWrap>
           <Price>
             가격&nbsp;
-            <PriceInfo>{props && props.price}원</PriceInfo>
+            <PriceInfo>
+              {props && props.price.toLocaleString("ko-KR")}원
+            </PriceInfo>
             &nbsp;할인 ({props && props.discount} 적용)
           </Price>
         </DetailWrap>

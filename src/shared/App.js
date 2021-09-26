@@ -13,6 +13,7 @@ import Sale from "pages/Sale";
 import Detail from "pages/Detail";
 import "fonts/App.css";
 import Carts from "pages/Carts";
+import Footer from "components/Footer";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/cart" exact component={Carts} />
         </Switch>
       </ConnectedRouter>
+      <Footer />
     </>
   );
 };

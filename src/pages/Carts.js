@@ -1,34 +1,25 @@
-import { product } from "dummy_data/category";
 import React from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Cart from "./Cart";
 
 const Carts = () => {
   const data = useSelector((state) => state.cart.data);
-  const dispatch = useDispatch();
 
   let totalsum = 0;
   data.map((p, idx) => {
-    console.log(totalsum + parseInt(p.beforeprice.replace(/\,/g, "")));
+    console.log(p.beforeprice);
+    return (totalsum = totalsum + p.beforeprice);
   });
-
-  // const totaldeliverysum = 0
-  // data.map((p, idx) => {
-  //   totaldeliverysum = totaldeliverysum + parseInt(p.price.replace(/\,/g, ""));
-  // });
 
   let totaldiscount = 0;
   data.map((p, idx) => {
-    totaldiscount =
-      totaldiscount +
-      (parseInt(p.beforeprice.replace(/\,/g, "")) -
-        parseInt(p.price.replace(/\,/g, "")));
+    return (totaldiscount = totaldiscount + p.beforeprice - p.price);
   });
 
   let paypricesum = 0;
   data.map((p, idx) => {
-    paypricesum = paypricesum + parseInt(p.price.replace(/\,/g, ""));
+    return (paypricesum = paypricesum + p.price);
   });
 
   return (
@@ -120,12 +111,6 @@ const PayPrice = styled.div`
   justify-content: space-between;
 `;
 
-const Pay = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
 const Price = styled.div`
   font-family: "AppleSDGothicNeoL";
   font-size: 20px;
@@ -144,6 +129,8 @@ const CartWrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 800px;
+  margin-right: 10px;
+  border-top: 1px solid;
 `;
 
 const Name = styled.div`
@@ -158,6 +145,7 @@ const Wrap = styled.div`
   width: 1000px;
   margin: 0px auto;
   flex-direction: column;
+  height: 600px;
 `;
 
 export default Carts;

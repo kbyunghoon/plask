@@ -5,7 +5,7 @@ import Cart from "media/icon/Cart.svg";
 import Heart from "media/icon/Heart.svg";
 import { history } from "redux/configureStore";
 
-const Header = (props) => {
+const Header = () => {
   return (
     <Container>
       <LogoWrap>

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ReactComponent as Fillstar } from "media/icon/FillStar.svg";
 import { ReactComponent as Arrow } from "media/icon/Arrow.svg";
 import { product } from "dummy_data/category";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ADD_CART } from "redux/modules/cart";
 import Swal from "sweetalert2";
 
@@ -12,7 +12,6 @@ const Detail = () => {
   const params = useParams();
   const [data, setData] = useState();
   const dispatch = useDispatch();
-  const test = useSelector((state) => state.cart.data);
 
   useEffect(() => {
     for (const idx in product) {
@@ -57,7 +56,7 @@ const Detail = () => {
               Swal.fire({
                 icon: "error",
                 title: "준비 중입니다.",
-                confirmButtonText: '확인',
+                confirmButtonText: "확인",
               })
             }
           >
@@ -119,11 +118,13 @@ const Wrap = styled.div`
   flex-direction: row;
   margin: 0px auto;
   justify-content: center;
+  min-height: 500px;
 `;
 
 const DetailWrap = styled.div`
   display: flex;
   width: 400px;
+  height: 400px;
   flex-direction: column;
   justify-content: space-between;
 `;

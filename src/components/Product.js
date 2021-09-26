@@ -14,7 +14,7 @@ const Product = (props) => {
       <ProductName>{props.product}</ProductName>
       <Box>
         <Discount>{props.discount}</Discount>
-        <Price>{props.price}</Price>
+        <Price>{props.price.toLocaleString("ko-KR")}원</Price>
       </Box>
       <Star>
         <Fillstar />
@@ -39,6 +39,12 @@ const ProductImg = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   margin-bottom: 5px;
+  background-size: 100%;
+  transition: 0.5s ease-in-out;
+  :hover {
+    background-size: 110%;
+    background-position: 50%;
+  }
 `;
 
 const FreeDelivery = styled.div`
