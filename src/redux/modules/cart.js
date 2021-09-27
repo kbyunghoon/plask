@@ -20,7 +20,7 @@ const cartSlice = createSlice({
       } else {
         Swal.fire({
           icon: "error",
-          title: "장바구니에 이미 추가되었습니다..",
+          title: "장바구니에 이미 추가되었습니다.",
           showConfirmButton: false,
           timer: 1000,
         });

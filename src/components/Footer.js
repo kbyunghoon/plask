@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Swal from "sweetalert2";
 
 const Footer = () => {
   const navTab = ["이용약관", "개인정보처리방침", "인재채용", "입점/제휴 문의"];
@@ -19,12 +20,35 @@ const Footer = () => {
         {navTab.map((p, idx) => {
           if (idx === 0) {
             return (
-              <NavLink key={idx} first={true}>
+              <NavLink
+                onClick={() =>
+                  Swal.fire({
+                    icon: "error",
+                    title: "준비 중입니다.",
+                    confirmButtonText: "확인",
+                  })
+                }
+                key={idx}
+                first={true}
+              >
                 {p}
               </NavLink>
             );
           } else {
-            return <NavLink key={idx}>{p}</NavLink>;
+            return (
+              <NavLink
+                onClick={() =>
+                  Swal.fire({
+                    icon: "error",
+                    title: "준비 중입니다.",
+                    confirmButtonText: "확인",
+                  })
+                }
+                key={idx}
+              >
+                {p}
+              </NavLink>
+            );
           }
         })}
       </Nav>
