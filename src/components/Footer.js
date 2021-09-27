@@ -18,9 +18,13 @@ const Footer = () => {
       <Nav>
         {navTab.map((p, idx) => {
           if (idx === 0) {
-            return <NavLink first={true}>{p}</NavLink>;
+            return (
+              <NavLink key={idx} first={true}>
+                {p}
+              </NavLink>
+            );
           } else {
-            return <NavLink>{p}</NavLink>;
+            return <NavLink key={idx}>{p}</NavLink>;
           }
         })}
       </Nav>
@@ -31,18 +35,26 @@ const Footer = () => {
             <InfoPart>
               {firstLine.map((p, idx) => {
                 if (idx === 0) {
-                  return <Info first={true}>{p}</Info>;
+                  return (
+                    <Info key={idx} first={true}>
+                      {p}
+                    </Info>
+                  );
                 } else {
-                  return <Info>{p}</Info>;
+                  return <Info key={idx}>{p}</Info>;
                 }
               })}
             </InfoPart>
             <InfoPart>
               {secondLine.map((p, idx) => {
                 if (idx === 0) {
-                  return <Info first={true}>{p}</Info>;
+                  return (
+                    <Info key={idx} first={true}>
+                      {p}
+                    </Info>
+                  );
                 } else {
-                  return <Info>{p}</Info>;
+                  return <Info key={idx}>{p}</Info>;
                 }
               })}
             </InfoPart>
