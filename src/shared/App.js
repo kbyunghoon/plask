@@ -14,12 +14,14 @@ import Detail from "pages/Detail";
 import "fonts/App.css";
 import Carts from "pages/Carts";
 import Footer from "components/Footer";
+import MobileHeader from "components/MobileHeader";
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
       <Header />
+      <MobileHeader />
       <ConnectedRouter history={history}>
         <Switch>
           <Route path="/" exact component={Home} />

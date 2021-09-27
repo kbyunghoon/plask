@@ -6,7 +6,7 @@ import Heart from "media/icon/Heart.svg";
 import { history } from "redux/configureStore";
 import Swal from "sweetalert2";
 
-const Header = () => {
+const MobileHeader = (props) => {
   return (
     <Container>
       <Wrap>
@@ -110,8 +110,7 @@ const Container = styled.header`
   border-bottom: 2px solid;
   margin-bottom: 30px;
   margin-top: 20px;
-  height: 100px;
-  @media only screen and (max-width: 800px) {
+  @media only screen and (min-width: 801px) {
     display: none;
   }
 `;
@@ -134,19 +133,24 @@ const NavMine = styled.nav`
 `;
 
 const MenuNav = styled.nav`
-  width: 700px;
+  width: calc(100% - 50px);
   display: flex;
   justify-content: space-between;
-  gap: 0px 50px;
+  gap: 0px 10px;
   align-items: center;
+  @media only screen and (max-width: 400px) {
+    font-size: 3vw;
+    width: 95%;
+  }
 `;
 
 const Tab = styled.a`
   cursor: pointer;
   padding: 20px 10px;
   font-weight: 600;
-  font-size: 20px;
   color: black;
+  user-select: none;
+  text-align: center;
 `;
 
-export default Header;
+export default MobileHeader;

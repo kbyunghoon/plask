@@ -14,6 +14,7 @@ const Kids = () => {
 
   return (
     <Container>
+      <h1>Kids</h1>
       <CategoryContainer>
         {small_category.map((p, idx) => {
           return (
@@ -102,13 +103,23 @@ const Bar = styled.div`
   align-items: center;
   border-bottom: 1px solid;
   padding: 25px 0px;
+  @media only screen and (max-width: 680px) {
+    flex-direction: column;
+  }
 `;
 
 const SumProduct = styled.div`
   font-family: "GowunDodum-Regular";
+  @media only screen and (max-width: 680px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const SortMenu = styled.div`
+  @media only screen and (max-width: 370px) {
+    font-size: 4vw;
+  }
+  user-select: none;
   display: flex;
   flex-direction: row;
   gap: 0px 10px;
@@ -125,7 +136,7 @@ const Sort = styled.div`
 `;
 
 const Container = styled.div`
-  width: 1200px;
+  width: calc(100%-200px);
   display: flex;
   flex-direction: column;
   margin: 0px auto;
@@ -133,8 +144,17 @@ const Container = styled.div`
 `;
 
 const CategoryContainer = styled.ul`
-  display: flex;
+  margin-top: 10px;
+  user-select: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
+  word-break: keep-all;
+  flex-direction: column;
+  row-gap: 10px;
+  @media only screen and (max-width: 400px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const Category = styled.li`
@@ -153,7 +173,22 @@ const ProductContainer = styled.div`
 
 const Products = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  @media only screen and (max-width: 1600px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  @media only screen and (max-width: 1350px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  @media only screen and (max-width: 1100px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media only screen and (max-width: 800px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media only screen and (max-width: 610px) {
+    grid-template-columns: 1fr;
+  }
   gap: 30px 10px;
 `;
 

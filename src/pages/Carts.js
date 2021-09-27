@@ -2,23 +2,24 @@ import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import Cart from "./Cart";
+import Swal from "sweetalert2";
 
 const Carts = () => {
   const data = useSelector((state) => state.cart.data);
 
   let totalsum = 0;
-  data.map((p, idx) => {
+  data.map((p) => {
     console.log(p.beforeprice);
     return (totalsum = totalsum + p.beforeprice);
   });
 
   let totaldiscount = 0;
-  data.map((p, idx) => {
+  data.map((p) => {
     return (totaldiscount = totaldiscount + p.beforeprice - p.price);
   });
 
   let paypricesum = 0;
-  data.map((p, idx) => {
+  data.map((p) => {
     return (paypricesum = paypricesum + p.price);
   });
 
@@ -27,11 +28,16 @@ const Carts = () => {
       <Name>홍길동님 장바구니</Name>
       <CartContainer>
         <CartWrap>
-          {data.map((p, idx) => {
+          {data.length === 0 ? (
+            <p style={{ fontSize: "20px", fontWeight: "bold" }}>
+              장바구니가 비어있습니다.
+            </p>
+          ) : null}
+          {data.map((p) => {
             return <Cart {...p} />;
           })}
         </CartWrap>
-        <RightWrap>
+        <PayWrap>
           <Price>
             <TotalPrice>
               총 상품금액
@@ -49,14 +55,24 @@ const Carts = () => {
               <PriceText>{paypricesum.toLocaleString("ko-KR")}원</PriceText>
             </PayPrice>
           </Price>
-          <BuyButton>구매하기</BuyButton>
-        </RightWrap>
+          <BuyButton
+            onClick={() =>
+              Swal.fire({
+                icon: "error",
+                title: "준비 중입니다.",
+                confirmButtonText: "확인",
+              })
+            }
+          >
+            구매하기
+          </BuyButton>
+        </PayWrap>
       </CartContainer>
     </Wrap>
   );
 };
 
-const RightWrap = styled.div`
+const PayWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,6 +101,11 @@ const PriceText = styled.div`
 const CartContainer = styled.div`
   display: flex;
   flex-direction: row;
+  @media only screen and (max-width: 1100px) {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
 `;
 
 const TotalPrice = styled.div`
@@ -131,6 +152,13 @@ const CartWrap = styled.div`
   width: 800px;
   margin-right: 10px;
   border-top: 1px solid;
+  margin-bottom: 50px;
+  align-items: center;
+  justify-content: center;
+  @media only screen and (max-width: 1100px) {
+    align-items: center;
+    width: 100%;
+  }
 `;
 
 const Name = styled.div`
@@ -146,6 +174,10 @@ const Wrap = styled.div`
   margin: 0px auto;
   flex-direction: column;
   height: 600px;
+  @media only screen and (max-width: 1100px) {
+    align-items: center;
+    width: 90%;
+  }
 `;
 
 export default Carts;

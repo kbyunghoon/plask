@@ -10,13 +10,13 @@ import { history } from "redux/configureStore";
 const Home = () => {
   return (
     <Container>
-      <LeftDiv>
+      <LeftDiv></LeftDiv>
+      <RightDiv>
         <ProductImg
+          style={{ gridArea: "1 / 1 / 3 / 2" }}
           onClick={() => {
             history.push("/category/new");
           }}
-          height="600"
-          width="274"
           source={Img1}
         >
           <TextCover>
@@ -25,14 +25,10 @@ const Home = () => {
             <Text>2021년 새로운 아이템</Text>
           </TextCover>
         </ProductImg>
-      </LeftDiv>
-      <RightDiv>
         <ProductImg
           onClick={() => {
             history.push("/category/men");
           }}
-          height="290"
-          width="290"
           source={Img2}
         >
           <TextCover>
@@ -45,8 +41,6 @@ const Home = () => {
           onClick={() => {
             history.push("/category/women");
           }}
-          height="290"
-          width="290"
           source={Img3}
         >
           <TextCover>
@@ -59,8 +53,6 @@ const Home = () => {
           onClick={() => {
             history.push("/category/kids");
           }}
-          height="290"
-          width="290"
           source={Img4}
         >
           <TextCover>
@@ -73,8 +65,6 @@ const Home = () => {
           onClick={() => {
             history.push("/category/sale");
           }}
-          height="290"
-          width="290"
           source={Img5}
         >
           <TextCover>
@@ -92,9 +82,23 @@ const LeftDiv = styled.div``;
 
 const RightDiv = styled.div`
   display: grid;
-  grid-template-columns: 300px 300px;
+  grid-template-columns: 300px 300px 300px;
+  grid-auto-rows: minmax(300px, auto);
+  gap: 20px;
   align-items: center;
   justify-items: center;
+  @media only screen and (max-width: 1050px) {
+    grid-template-columns: 200px 200px 200px;
+    grid-auto-rows: minmax(200px, auto);
+  }
+  @media only screen and (max-width: 680px) {
+    grid-template-columns: 250px 250px;
+    grid-auto-rows: minmax(250px, auto);
+  }
+  @media only screen and (max-width: 550px) {
+    grid-template-columns: 180px 180px;
+    grid-auto-rows: minmax(180px, auto);
+  }
 `;
 
 const TextCover = styled.div`
@@ -112,6 +116,8 @@ const Text = styled.div`
   font-size: 20px;
   font-weight: bold;
   display: flex;
+  word-break: keep-all;
+  text-align: center;
 `;
 
 const Container = styled.div`
@@ -120,13 +126,16 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
 `;
 
 const ProductImg = styled.div`
   cursor: pointer;
   background-image: url(${(props) => props.source});
-  height: ${(props) => props.height}px;
-  width: ${(props) => props.width}px;
+  height: ${(props) => (props.height ? `${props.height}px` : "100%")};
+  width: ${(props) => (props.width ? `${props.width}px` : "100%")};
   border-radius: 5px;
   background-size: contain;
   background-position: center;

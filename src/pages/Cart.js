@@ -40,6 +40,10 @@ const TrashLogo = styled.a`
   width: 22px;
   height: 26px;
   margin-right: 20px;
+  background-size: 80%;
+  @media only screen and (max-width: 1100px) {
+    margin-right: 0px;
+  }
 `;
 
 const ProductWrap = styled.div`
@@ -57,6 +61,10 @@ const Price = styled.div`
   flex-direction: row;
   font-weight: 600;
   font-family: "AppleSDGothicNeoUL";
+  align-items: center;
+  @media only screen and (max-width: 450px) {
+    font-size: 3vw;
+  }
 `;
 
 const FreeDelivery = styled.div``;
@@ -64,6 +72,9 @@ const FreeDelivery = styled.div``;
 const ProductName = styled.div`
   font-size: 20px;
   font-weight: 600;
+  @media only screen and (max-width: 450px) {
+    font-size: 4vw;
+  }
 `;
 
 const DetailWrap = styled.div`
@@ -80,6 +91,7 @@ const CartWrap = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid;
   padding: 15px 0px;
+  width: 100%;
 `;
 
 const CartBox = styled.div`

@@ -41,10 +41,20 @@ const Detail = () => {
           <ProductName>{data && data.product}</ProductName>
           <Line2>
             <Discount>{data && data.discount}</Discount>
-            <DiscountBefore>{data && data.beforeprice}</DiscountBefore>
+            <DiscountBefore>
+              {data && data.beforeprice.toLocaleString("ko-KR")}
+            </DiscountBefore>
           </Line2>
-          <Price>{data && data.price}</Price>
-          <Coupon>
+          <Price>{data && data.price.toLocaleString("ko-KR")}원</Price>
+          <Coupon
+            onClick={() =>
+              Swal.fire({
+                icon: "error",
+                title: "준비 중입니다.",
+                confirmButtonText: "확인",
+              })
+            }
+          >
             회원가입 시 10% 할인!
             <Arrow />
           </Coupon>
@@ -81,6 +91,14 @@ const ButtonWrap = styled.div`
   margin: 0px auto;
   margin-bottom: 20px;
   width: 350px;
+  @media only screen and (max-width: 900px) {
+    margin-top: 20px;
+    width: 350px;
+  }
+  @media only screen and (max-width: 450px) {
+    margin-top: 20px;
+    width: 300px;
+  }
 `;
 
 const CartButton = styled.button`
@@ -96,6 +114,9 @@ const CartButton = styled.button`
   border: 1px solid;
   border-color: #5b57ff;
   border-radius: 5px;
+  @media only screen and (max-width: 450px) {
+    width: 120px;
+  }
 `;
 
 const BuyButton = styled.button`
@@ -111,6 +132,9 @@ const BuyButton = styled.button`
   border: 1px solid;
   border-color: #5b57ff;
   border-radius: 5px;
+  @media only screen and (max-width: 450px) {
+    width: 120px;
+  }
 `;
 
 const Wrap = styled.div`
@@ -119,14 +143,21 @@ const Wrap = styled.div`
   margin: 0px auto;
   justify-content: center;
   min-height: 500px;
+  @media only screen and (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const DetailWrap = styled.div`
   display: flex;
-  width: 400px;
-  height: 400px;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: 10px;
+  @media only screen and (min-width: 901px) {
+    width: 400px;
+    height: 400px;
+  }
 `;
 
 const Coupon = styled.div`
@@ -142,8 +173,6 @@ const Coupon = styled.div`
   & > svg {
     transform: rotate(90deg);
     margin-right: 10px;
-    /* width: 10px;
-    height: 10px; */
   }
 `;
 
@@ -190,11 +219,22 @@ const ProductImg = styled.div`
   background-repeat: no-repeat;
   margin-bottom: 5px;
   margin-right: 20px;
+  @media only screen and (max-width: 900px) {
+    margin-bottom: 0px;
+    margin-right: 0px;
+  }
+  @media only screen and (max-width: 450px) {
+    width: 80vw;
+    height: 80vw;
+  }
 `;
 
 const ProductName = styled.h1`
   font-family: "SBAggroM";
   font-size: 30px;
+  @media only screen and (max-width: 450px) {
+    font-size: 25px;
+  }
 `;
 
 const FreeDelivery = styled.div`

@@ -14,60 +14,66 @@ const Footer = () => {
   ];
 
   return (
-    <Wrap>
-      <FooterWrap>
-        <Nav>
-          {navTab.map((p, idx) => {
-            if (idx === 0) {
-              return <NavLink first={true}>{p}</NavLink>;
-            } else {
-              return <NavLink>{p}</NavLink>;
-            }
-          })}
-        </Nav>
-        <AddressWrap>
-          <CompanyInfo>
-            <About>(주)라우트육십오</About>
-            <InfoWrap>
-              <InfoPart>
-                {firstLine.map((p, idx) => {
-                  if (idx === 0) {
-                    return <Info first={true}>{p}</Info>;
-                  } else {
-                    return <Info>{p}</Info>;
-                  }
-                })}
-              </InfoPart>
-              <InfoPart>
-                {secondLine.map((p, idx) => {
-                  if (idx === 0) {
-                    return <Info first={true}>{p}</Info>;
-                  } else {
-                    return <Info>{p}</Info>;
-                  }
-                })}
-              </InfoPart>
-            </InfoWrap>
-          </CompanyInfo>
-        </AddressWrap>
-      </FooterWrap>
-    </Wrap>
+    <FooterWrap>
+      <Nav>
+        {navTab.map((p, idx) => {
+          if (idx === 0) {
+            return <NavLink first={true}>{p}</NavLink>;
+          } else {
+            return <NavLink>{p}</NavLink>;
+          }
+        })}
+      </Nav>
+      <AddressWrap>
+        <CompanyInfo>
+          <About>(주)라우트육십오</About>
+          <InfoWrap>
+            <InfoPart>
+              {firstLine.map((p, idx) => {
+                if (idx === 0) {
+                  return <Info first={true}>{p}</Info>;
+                } else {
+                  return <Info>{p}</Info>;
+                }
+              })}
+            </InfoPart>
+            <InfoPart>
+              {secondLine.map((p, idx) => {
+                if (idx === 0) {
+                  return <Info first={true}>{p}</Info>;
+                } else {
+                  return <Info>{p}</Info>;
+                }
+              })}
+            </InfoPart>
+          </InfoWrap>
+        </CompanyInfo>
+      </AddressWrap>
+    </FooterWrap>
   );
 };
 
 const Info = styled.span`
   font-style: normal;
-  ${(props) =>
-    props.first
-      ? ""
-      : `
-::before {
-  content: "|";
-  margin: 0px 10px;
-}`}
+  @media only screen and (min-width: 681px) {
+    ${(props) =>
+      props.first
+        ? ""
+        : `
+  ::before {
+    content: "|";
+    margin: 0px 10px;
+  }`}
+  }
 `;
 
-const InfoPart = styled.div``;
+const InfoPart = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media only screen and (max-width: 680px) {
+    flex-direction: column;
+  }
+`;
 
 const InfoWrap = styled.div``;
 
@@ -81,21 +87,6 @@ const CompanyInfo = styled.div``;
 
 const AddressWrap = styled.address`
   padding: 20px 16px 0;
-`;
-
-const Wrap = styled.div`
-  margin-top: 100px;
-  font-family: "AppleSDGothicNeoR";
-  z-index: 99;
-  background-color: #f7f8fa;
-  position: absolute;
-  position: relative;
-  z-index: 11;
-  width: 100%;
-  padding: 15px 0;
-  /* text-align: center; */
-  height: 200px;
-  border-top: 1px solid #e8e8e8;
 `;
 
 const NavLink = styled.a`
@@ -117,6 +108,18 @@ const Nav = styled.nav`
   margin-left: 20px;
 `;
 
-const FooterWrap = styled.footer``;
+const FooterWrap = styled.footer`
+  margin-top: 100px;
+  font-family: "AppleSDGothicNeoR";
+  z-index: 99;
+  background-color: #f7f8fa;
+  position: absolute;
+  position: relative;
+  z-index: 11;
+  width: 100%;
+  padding: 15px 0;
+  height: 200px;
+  border-top: 1px solid #e8e8e8;
+`;
 
 export default Footer;
