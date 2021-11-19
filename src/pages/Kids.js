@@ -73,7 +73,6 @@ const Kids = () => {
               const setting = [...product_data].sort((a, b) => {
                 return parseInt(a.price) - parseInt(b.price);
               });
-              console.log(setting);
               setProduct_data(setting);
               setActive("lowprice");
             }}
